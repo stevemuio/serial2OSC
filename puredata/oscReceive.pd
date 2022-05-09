@@ -1,0 +1,52 @@
+#N canvas 328 77 1406 503 12;
+#X obj 111 115 oscparse;
+#X obj 113 138 route list;
+#X obj 113 174 route analog digital;
+#X obj 123 230 unpack 0 0 0 0;
+#X obj 130 283 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 368 223 unpack 0 0 0 0;
+#X obj 127 256 change;
+#X obj 189 285 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 186 258 change;
+#X obj 251 288 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 248 261 change;
+#X obj 310 290 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 307 263 change;
+#X obj 374 289 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 371 262 change;
+#X obj 433 291 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 430 264 change;
+#X obj 495 294 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 492 267 change;
+#X obj 554 296 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 551 269 change;
+#X obj 111 88 netreceive -u -b 9000;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 0;
+#X connect 2 1 5 0;
+#X connect 3 0 6 0;
+#X connect 3 1 8 0;
+#X connect 3 2 10 0;
+#X connect 3 3 12 0;
+#X connect 5 0 14 0;
+#X connect 5 1 16 0;
+#X connect 5 2 18 0;
+#X connect 5 3 20 0;
+#X connect 6 0 4 0;
+#X connect 8 0 7 0;
+#X connect 10 0 9 0;
+#X connect 12 0 11 0;
+#X connect 14 0 13 0;
+#X connect 16 0 15 0;
+#X connect 18 0 17 0;
+#X connect 20 0 19 0;
+#X connect 21 0 0 0;
