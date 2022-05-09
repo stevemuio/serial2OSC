@@ -69,6 +69,8 @@ if __name__ == "__main__":
       help="OSC message style c (composite, default) for /address 11 12 13 , or i (individual) for /address/1 11 ")
   parser.add_argument("--config", default="none",
         help="The over riding config file")
+  parser.add_argument("--print", default="none",
+        help="Print the data received for the matching address")
   args = parser.parse_args()
 
   #loadconfigs
@@ -116,7 +118,10 @@ if __name__ == "__main__":
   print(configData['configure']['ip'])
   while (1):
     cmd = str(ser.readline())
-    #print(cmd)
+
+    if(cmdAr[0]==args.print):
+        print(cmdAr)
+
     cmdAr = cmd[2:(len(cmd)-5)].split(':')
     #print(cmdAr)
     if len(cmdAr)>1:
