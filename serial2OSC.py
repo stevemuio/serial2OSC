@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 pySerialOSCdaemon
 Steve Symons 2022

@@ -26,11 +26,16 @@ Loads default configuration: localhost, port 9000, composite oscmode
 
   $python3 serial2OSC
 
+  or if you enable execute permissions then
+
+  $./serial2OSC
+
 Arguments:
---port P              :Destination port P (default is 9000)
---ip xxx.xxx.xx.xx    :Destination IP xxx.xxx.xx.xx (default localhost)       
---oscmode c or i      :Set oscmode as composite c (default) or indivdualal
---config ffff.json    :Use an external json configuration file
+--serial /dev/xxxxxxx       :the serial port you want to use, prints out available ports if not accessible.     
+--port P                    :Destination port P (default is 9000)
+--ip xxx.xxx.xx.xx          :Destination IP xxx.xxx.xx.xx (default localhost)       
+--oscmode c or i            :Set oscmode as composite c (default) or indivdualal
+--config ffff.json          :Use an external json configuration file
 
 
 **Configuration file**
