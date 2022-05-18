@@ -29,7 +29,7 @@ This is the Laburnam mLog:
 
 **Tidal**
 =========
-Tidal and serialToOSC manage everything for you in the back ground.  To access the data you use a command float (cF) and the name of the data you want to access.  This is like Midi and discussed here (add link to OSC Tidal page).
+Tidal and serialToOSC manage everything for you in the back ground.  To access the data you use a command float (cF) and the name of the data you want to access.  This is like Midi and discussed [here](http://tidalcycles.org/docs/configuration/MIDIOSC/osc).
 
 e.g.
       d1 $ sound "bev*4" # speed ("2" * cF 1 "analog-2") # legato 1
