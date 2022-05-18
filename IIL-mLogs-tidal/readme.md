@@ -50,6 +50,7 @@ e.g.
         # gain (cF 1 "digital-1")
 
 **mLog data and data names**
+============================
 The mLog data is normalised between 0. and 1.0.  Both mLogs have an accelerometer inside this has Pitch and Roll (like a boat).
 
 Control on mLog       name in tidal
