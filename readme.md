@@ -3,6 +3,7 @@
 Steve Symons 2022
 
 **Premise**
+
 Takes a line of text from serial and turns it into OSC.
 
 e.g.
@@ -15,20 +16,27 @@ e.g.
       /analog/2 234
 
 **Pre-requisites**
-pySerial      https://pypi.org/project/pyserial/
-python-osc    https://pypi.org/project/python-osc/
-python3
+
+Python3
+
+pySerial https://pypi.org/project/pyserial/
+
+python-osc https://pypi.org/project/python-osc/
+
+    $ pip3 install pyserial python-osc
+
 
 **Usage**
+
 From serial2OSC folder
 
 Loads default configuration: localhost, port 9000, composite oscmode
 
-  $python3 serial2OSC
+   python3 serial2OSC
 
-  or if you enable execute permissions then
+  or if you enable execute permissions using chmod then
 
-  $./serial2OSC
+  ./serial2OSC
 
 Arguments:
 --serial /dev/xxxxxxx       :the serial port you want to use, prints out available ports if not accessible.     
@@ -40,7 +48,7 @@ Arguments:
 
 **Configuration file**
 
-    $python3 serial2OSC --config IIL-yew-config.json
+    python3 serial2OSC --config IIL-yew-config.json
 
 You can set all the above in a config file - you can then use arguments to override this.
 
