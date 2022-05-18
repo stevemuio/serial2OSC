@@ -9,6 +9,11 @@ v02
 v03
 uses a config file
 
+
+v04
+adding addr overide so out messages become
+/overrideAddr analog-1 1.234
+
 todo
 - check if config file there and not crash is not.
 - hard code default JSON core options and change argparse setction to ref these not 'none'
@@ -71,11 +76,14 @@ if __name__ == "__main__":
         help="The over riding config file")
   parser.add_argument("--print", default="none",
         help="Print the data received for the matching address")
+  parser.add_argument("--overrideaddr", default="none",
+          help="Override the addressing to get /overrideAddr analog 123 34 344 or Tidal friendly /overrideAddr analog-1 123")
   args = parser.parse_args()
 
   #loadconfigs
   loadConfigJSON("default-config.json")
-
+  if (args.config!='none'):
+      loadConfigJSON(args.config)
 
   #overide with arguments
   if (args.ip!="none"):
@@ -86,9 +94,10 @@ if __name__ == "__main__":
       configData['configure']['oscmode'] = args.oscmode
   if (args.serial!='none'):
       configData['configure']['serial'] = args.serial
-  if (args.config!='none'):
-      loadConfigJSON(args.config)
+  if (args.overrideaddr!='none'):
+      configData['configure']['overrideaddr'] = args.overrideaddr
 
+  overrideAddr = configData['configure']['overrideaddr']
   client = udp_client.UDPClient(configData['configure']['ip'], configData['configure']['port'])
   oscmode = configData['configure']['oscmode']
   serialName = configData['configure']['serial']
@@ -118,24 +127,32 @@ if __name__ == "__main__":
   print(configData['configure']['ip'])
   while (1):
     cmd = str(ser.readline())
+    #print(cmd)
+    cmdAr = cmd[2:(len(cmd)-5)].split(':')
 
     if(cmdAr[0]==args.print):
         print(cmdAr)
 
-    cmdAr = cmd[2:(len(cmd)-5)].split(':')
-    #print(cmdAr)
     if len(cmdAr)>1:
         if (oscmode == 'c'):
-              msg = osc_message_builder.OscMessageBuilder(address = "/"+cmdAr[0])
+              if (overrideAddr=="none"):
+                  msg = osc_message_builder.OscMessageBuilder(address = "/"+cmdAr[0])
+              else:
+                  msg = osc_message_builder.OscMessageBuilder(address = overrideAddr)
+                  msg.add_arg(cmdAr[0]);
               for i in range(1,len(cmdAr)):
                  msg.add_arg(scaleOutput(cmdAr[0], str(i), float(cmdAr[i])))
               msg = msg.build()
               client.send(msg)
         else:
               for i in range(1,len(cmdAr)):
-                 msg = osc_message_builder.OscMessageBuilder(address = "/"+cmdAr[0]+"/"+str(i))
+                 if (overrideAddr=="none"):
+                     msg = osc_message_builder.OscMessageBuilder(address = "/"+cmdAr[0]+"/"+str(i))
+                 else:
+                     msg = osc_message_builder.OscMessageBuilder(address = overrideAddr)
+                     msg.add_arg(cmdAr[0]+"-"+str(i));
                  msg.add_arg(scaleOutput(cmdAr[0], str(i), float(cmdAr[i])))
                  msg = msg.build()
                  client.send(msg)
 
-    time.sleep(0.001)
+    time.sleep(0.01)
