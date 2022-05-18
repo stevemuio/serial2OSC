@@ -1,4 +1,5 @@
 **Serial to OSC**
+=================
 
 Steve Symons 2022
 
@@ -7,15 +8,21 @@ Steve Symons 2022
 Takes a line of text from serial and turns it into OSC.
 
 e.g.
-    analog:123:234:55:789
+analog:123:234:55:789
 
-    becomes either (composite oscmode - default)
-      /analog 123 234 55 789
-    or, in individual oscmode
-      /analog/1 123
-      /analog/2 234
+becomes either (composite oscmode - default)
 
-**Pre-requisites**
+  /analog 123 234 55 789
+  
+or, in individual oscmode
+
+  /analog/1 123
+  
+  /analog/2 234
+
+**Usage**
+
+1) Check you have everything you need ...
 
 Python3
 
@@ -23,22 +30,26 @@ pySerial https://pypi.org/project/pyserial/
 
 python-osc https://pypi.org/project/python-osc/
 
+Install these libraries by opening a Terminal window and typing
+
     $ pip3 install pyserial python-osc
 
 
-**Usage**
+2) Download the serialToOSC code - click on the green 'Code' button and download the zip. Your operating system might unzip it for you giving you a folder called "serialToOSC". This could end up in your Downloads folder so move it somewhere easy to find like on you desktop.
 
-From serial2OSC folder
+3) Open the Terminal again and navigate to the "serialToOSC" folder
 
-Loads default configuration: localhost, port 9000, composite oscmode
+e.g. on OSX
 
-   python3 serial2OSC
+    cd ~/Desktop/serialToOSC
+    
+4) Run serial2OSC.py from within the serialToOSC folder
 
-  or if you enable execute permissions using chmod then
+e.g. Loads default configuration: localhost, port 9000, composite oscmode. (note this will probably cause a serial port error as the programme will not know the name of your serial port - but it will proint a list for you)
 
-  ./serial2OSC
+    python3 serial2OSC.py
 
-Arguments:
+You use arguments to set the programme up correctly:
 --serial /dev/xxxxxxx       :the serial port you want to use, prints out available ports if not accessible.     
 --port P                    :Destination port P (default is 9000)
 --ip xxx.xxx.xx.xx          :Destination IP xxx.xxx.xx.xx (default localhost)       
@@ -48,7 +59,7 @@ Arguments:
 
 **Configuration file**
 
-    python3 serial2OSC --config IIL-yew-config.json
+    python3 serial2OSC.py --config IIL-yew-config.json
 
 You can set all the above in a config file - you can then use arguments to override this.
 
