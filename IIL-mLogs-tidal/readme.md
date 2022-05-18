@@ -24,19 +24,19 @@ This is the Laburnam mLog:
 
   Mean you not plugged the mLog, it's broken or you are trying to access the wrong mLog.
 
-  3) It's all good then head to Tidal!
+3) It's all good then head to Tidal!
 
 
+**Tidal**
+=========
+Tidal and serialToOSC manage everything for you in the back ground.  To access the data you use a command float (cF) and the name of the data you want to access.  This is like Midi and discussed here (add link to OSC Tidal page).
 
-  **Tidal**
-  Tidal and serialToOSC manage everything for you in the back ground.  To access the data you use a command float (cF) and the name of the data you want to access.  This is like Midi and discussed here (add link to OSC Tidal page).
-
-  e.g.
+e.g.
       d1 $ sound "bev*4" # speed ("2" * cF 1 "analog-2") # legato 1
 
-  Loads the sample "bev" then links the speed of the sample to 2 * "the control input called analog-2"
+Loads the sample "bev" then links the speed of the sample to 2 * "the control input called analog-2"
 
-  e.g.
+e.g.
       d1 $ s " bd hh bd hh*2"
         # lpf ("500 500 500" * ( "0.1" +  cF 1 "analog-1"))
         # lpq ("0.02" + "0.8" * cF 1 "analog-3")
