@@ -41,7 +41,7 @@ This is the Laburnam mLog:
         # lpf ("500 500 500" * ( "0.1" +  cF 1 "analog-1"))
         # lpq ("0.02" + "0.8" * cF 1 "analog-3")
 
-      Controls a low pass filter with analog-1 - note the **"0.1" + cF...** bit, the mLog sends float data from 0 to 1.0 so the low pass ffequency in effect goes between 500x0.1 and 500x1.1..
+Controls a low pass filter with analog-1 - note the **"0.1" + cF...** bit, the mLog sends float data from 0 to 1.0 so the low pass ffequency in effect goes between 500x0.1 and 500x1.1..
 
 e.g.
       d1 $ s "Superhoover" # slide ("1 1 -1") # accelerate 1
