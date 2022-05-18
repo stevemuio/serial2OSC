@@ -1,5 +1,6 @@
 **Using the Intelligent Instrument's Lab's two mLogs to Tidal**
 
+Have you come straight here in your excitement? Go back and download the repo and install the python libraries.
 
 **Usage**
 
@@ -13,11 +14,11 @@ This is the Laburnam mLog:
 
 2) The repositary already has the correct config files for these two mLogs so open a terminal and navigate to the serialToOSC directory and choose the appropriate command below.
 
-          python3 serial2OSC --config ILL-yew-tidal.json
+          python3 serial2OSC.py --config IIL-yew-tidal.json
   
   or
   
-     python3 serial2OSC --config ILL-laburnam-tidal.json
+     python3 serial2OSC.py --config IIL-laburnam-tidal.json
 
 If it starts then you should see the an address printed out i.e. 127.0.0.1
 
@@ -44,7 +45,11 @@ e.g. Controls a low pass filter with analog-1 - note the **"0.1" + cF...** bit, 
         # lpf ("500 500 500" * ( "0.1" +  cF 1 "analog-1"))
         # lpq ("0.02" + "0.8" * cF 1 "analog-3")
 
+Slight tweak to add a constant sound and the Q is now controlled by the roll on analog-2
 
+          d1 $ s " [bd hh bd hh*2, bev(5,8)]" # legato 2
+            # lpf ("7500 7500 7500" * ( "0.1" +  cF 1 "analog-1"))
+            # lpq ("0.02" + "0.8" * cF 1 "analog-2")
 
 e.g.  You can use the switch and the gain control to mute synths.
 
@@ -53,8 +58,6 @@ e.g.  You can use the switch and the gain control to mute synths.
             # lpq ("0.02" + "0.8" * cF 1 "analog-3")
             # gain (cF 1 "digital-1")
 
-
-**mLog data and data names**
 
 The mLog data is normalised between 0. and 1.0.  Both mLogs have an accelerometer inside this has Pitch and Roll (like a boat).
 
