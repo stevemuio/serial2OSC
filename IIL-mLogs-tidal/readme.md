@@ -13,16 +13,19 @@ This is the Laburnam mLog:
 
 2) The repositary already has the correct config files for these two mLogs so open a terminal and navigate to the serialToOSC directory and choose the appropriate command below.
 
-  $ python3 serial2OSC --config ILL-yew-tidal.json
-  $ python3 serial2OSC --config ILL-laburnam-tidal.json
+  python3 serial2OSC --config ILL-yew-tidal.json
+  
+  or
+  
+  python3 serial2OSC --config ILL-laburnam-tidal.json
 
-  If it starts then you should see the an address printed out i.e. 127.0.0.1
+If it starts then you should see the an address printed out i.e. 127.0.0.1
 
-  Errors like:
+Errors like:
 
   FileNotFoundError: [Errno 2] No such file or directory: '/dev/cu.usbmodem109618201'
 
-  Mean you not plugged the mLog, it's broken or you are trying to access the wrong mLog.
+Mean you not plugged the mLog, it's broken or you are trying to access the wrong mLog.
 
 3) It's all good then head to Tidal!
 
