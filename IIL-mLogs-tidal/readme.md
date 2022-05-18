@@ -47,24 +47,28 @@ e.g. Controls a low pass filter with analog-1 - note the **"0.1" + cF...** bit, 
 
 
 e.g.  You can use the switch and the gain control to mute synths.
-      d1 $ s "Superhoover" # slide ("1 1 -1") # accelerate 1
-        # lpf ("500" + "2000" * cF 1 "analog-1")
-        # lpq ("0.02" + "0.8" * cF 1 "analog-3")
-        # gain (cF 1 "digital-1")
+
+          d1 $ s "Superhoover" # slide ("1 1 -1") # accelerate 1
+            # lpf ("500" + "2000" * cF 1 "analog-1")
+            # lpq ("0.02" + "0.8" * cF 1 "analog-3")
+            # gain (cF 1 "digital-1")
 
 
 **mLog data and data names**
 
 The mLog data is normalised between 0. and 1.0.  Both mLogs have an accelerometer inside this has Pitch and Roll (like a boat).
 
-Control on mLog       name in tidal
+Control on mLog ==> name in tidal
 
-  Pitch                   analog-1
-  Roll                    analog-2
-  Knob 1                  analog-3
-  Knob 2                  analog-4
-
-  Buttons and switches.
-  Button                  digital-1 ..... 4 (the Laburnam log has 4 more buttons on the back)
+  Pitch ==> analog-1
+  
+  Roll ==> analog-2
+  
+  Knob 1 ==> analog-3
+  
+  Knob 2 ==> analog-4
+  
+  
+  Button/switch 1 .. 4 ==> digital-1 ..... 4 (the Laburnam log has 4 more buttons on the back numbered 5 to 8)
 
   You can use the switch and the gain control to mute synths.
