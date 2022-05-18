@@ -1,8 +1,8 @@
 **Using the Intelligent Instrument's Lab's two mLogs to Tidal**
 
 
-Usage
-=====
+**Usage**
+
 1) Identify your iLog
 
 This is the Yew mLog:
@@ -28,29 +28,30 @@ This is the Laburnam mLog:
 
 
 **Tidal**
-=========
 Tidal and serialToOSC manage everything for you in the back ground.  To access the data you use a command float (cF) and the name of the data you want to access.  This is like Midi and discussed [here](http://tidalcycles.org/docs/configuration/MIDIOSC/osc).
 
-e.g.
+e.g. Loads the sample "bev" then links the speed of the sample to 2 * "the control input called analog-2"
+
       d1 $ sound "bev*4" # speed ("2" * cF 1 "analog-2") # legato 1
 
-Loads the sample "bev" then links the speed of the sample to 2 * "the control input called analog-2"
 
-e.g.
+e.g. Controls a low pass filter with analog-1 - note the **"0.1" + cF...** bit, the mLog sends float data from 0 to 1.0 so the low pass ffequency in effect goes between 500x0.1 and 500x1.1..
+
       d1 $ s " bd hh bd hh*2"
         # lpf ("500 500 500" * ( "0.1" +  cF 1 "analog-1"))
         # lpq ("0.02" + "0.8" * cF 1 "analog-3")
 
-Controls a low pass filter with analog-1 - note the **"0.1" + cF...** bit, the mLog sends float data from 0 to 1.0 so the low pass ffequency in effect goes between 500x0.1 and 500x1.1..
 
-e.g.
+
+e.g.  You can use the switch and the gain control to mute synths.
       d1 $ s "Superhoover" # slide ("1 1 -1") # accelerate 1
         # lpf ("500" + "2000" * cF 1 "analog-1")
         # lpq ("0.02" + "0.8" * cF 1 "analog-3")
         # gain (cF 1 "digital-1")
 
+
 **mLog data and data names**
-============================
+
 The mLog data is normalised between 0. and 1.0.  Both mLogs have an accelerometer inside this has Pitch and Roll (like a boat).
 
 Control on mLog       name in tidal
